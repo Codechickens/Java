@@ -1,20 +1,21 @@
-// SV: Đỗ Quang Bách
 // Do Quang Bach
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Un-comment (xoa dấu //) o bài ban muon chay:
+        // Un-comment (xóa dấu //) ở bài bạn muốn chạy:
 
-        // new Bai1();
+        new Bai1();
         // new Bai2();
         // new Bai3();
         // new Bai4();
-         new Bai5();
+        // new Bai5();
         // new Bai6();
         // new Bai7();
         // new Bai8();
         // new Bai9();
+        // new Bai10();
     }
 }
 
@@ -168,42 +169,34 @@ class Bai5 {
         for (int i = 1; i < 10; i++) {
             System.out.println("2 x " + i + " = " + 2 * i);
         }
-        System.out.println();
 
         for (int i = 1; i < 10; i++) {
             System.out.println("3 x " + i + " = " + 3 * i);
         }
-        System.out.println();
 
         for (int i = 1; i < 10; i++) {
             System.out.println("4 x " + i + " = " + 4 * i);
         }
-        System.out.println();
 
         for (int i = 1; i < 10; i++) {
             System.out.println("5 x " + i + " = " + 5 * i);
         }
-        System.out.println();
 
         for (int i = 1; i < 10; i++) {
             System.out.println("6 x " + i + " = " + 6 * i);
         }
-        System.out.println();
 
         for (int i = 1; i < 10; i++) {
             System.out.println("7 x " + i + " = " + 7 * i);
         }
-        System.out.println();
 
         for (int i = 1; i < 10; i++) {
             System.out.println("8 x " + i + " = " + 8 * i);
         }
-        System.out.println();
 
         for (int i = 1; i < 10; i++) {
             System.out.println("9 x " + i + " = " + 9 * i);
         }
-        System.out.println();
     }
 }
 
@@ -213,7 +206,7 @@ class Bai6 {
 
     Bai6() {
         while (true) {
-            System.out.print("Enter integer n (2 <= n <= 10^6): ");
+            System.out.print("Enter integer n (n >= 1): ");
             n = sc.nextInt();
             if (n >= 1) {
                 break;
@@ -221,7 +214,7 @@ class Bai6 {
             System.out.println("Invalid integer! Please enter again.");
         }
 
-        if ( 2 <= n && n <= (Math.pow(10, 6))) {
+        if (n < 2) {
             System.out.println("NO");
             return;
         }
@@ -312,5 +305,66 @@ class Bai9 {
             }
             System.out.println();
         }
+    }
+}
+
+class Student {
+    String name;
+    double gpa;
+
+    Student(String name, double gpa) {
+        this.name = name;
+        this.gpa = gpa;
+    }
+}
+
+class Bai10 {
+    Scanner sc = new Scanner(System.in);
+    int n;
+    Student[] students;
+
+    Bai10() {
+        while (true) {
+            System.out.print("Enter number of students n (1 <= n <= 50): ");
+            n = sc.nextInt();
+            if (n >= 1 && n <= 50) {
+                break;
+            }
+            System.out.println("Invalid integer! Please enter again.");
+        }
+
+        students = new Student[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("\n--- Student " + (i + 1) + " ---");
+            sc.nextLine(); // Bo qua dong truoc do
+
+            System.out.print("Enter full name: ");
+            String name = sc.nextLine();
+
+            double gpa;
+            while (true) {
+                System.out.print("Enter GPA (0.0 <= GPA <= 10.0): ");
+                gpa = sc.nextDouble();
+                if (gpa >= 0.0 && gpa <= 10.0) {
+                    break;
+                }
+                System.out.println("Invalid GPA! Please enter again.");
+            }
+
+            students[i] = new Student(name, gpa);
+        }
+
+        System.out.println("\n==========================================");
+        System.out.println("           STUDENT LIST TABLE             ");
+        System.out.println("==========================================");
+        System.out.printf("| %-5s | %-25s | %-7s |\n", "No.", "Full Name", "GPA");
+        System.out.println("------------------------------------------");
+
+        for (int i = 0; i < n; i++) {
+            System.out.printf("| %-5d | %-25s | %-7.2f |\n", (i + 1), students[i].name, students[i].gpa);
+        }
+
+        System.out.println("==========================================");
     }
 }
